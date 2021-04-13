@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x_large_dp"
         android:orientation="vertical"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/large_dp">
+        android:background="@color/white">
 
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x_large_dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/manage_appointment"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_blue" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/x_large_dp"
+            android:padding="2dp"
+            android:layout_marginTop="@dimen/x_large_dp"
+            android:layout_marginEnd="@dimen/x_large_dp"
+            android:background="@drawable/outline"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/large_dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/manage_appointment"
-                android:textAllCaps="true"
-                android:textColor="@color/dark_blue" />
-
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/x_large_dp"
-                android:layout_marginTop="@dimen/x_large_dp"
-                android:layout_marginEnd="@dimen/x_large_dp"
-                android:orientation="horizontal">
-
-                <RadioButton
+            <RadioButton
                     android:id="@+id/cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -137,6 +132,4 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/save" />
         </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
 </layout>

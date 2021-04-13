@@ -37,6 +37,9 @@ import com.nightcoder.mothercare.databinding.ManageAppointBinding;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
 
@@ -84,7 +87,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         } else if (appointment.schedule.equals("null")) {
             holder.binding.time.setVisibility(View.GONE);
         } else {
-            holder.binding.time.setText("Schedule: " + appointment.schedule);
+            holder.binding.time.setText("Scheduled: " + appointment.schedule);
         }
 
         Picasso.get().load(new File(appointment.photoUrl)).into(holder.binding.image);
@@ -113,15 +116,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                 BottomSheetDialog dialog = new BottomSheetDialog(mContext);
                 dialog.setContentView(binding.getRoot());
                 dialog.setCanceledOnTouchOutside(true);
-                Window window = dialog.getWindow();
-                assert window != null;
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                window.setWindowAnimations(R.style.DialogAnimation);
-                WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-                lp.dimAmount = 0.9f;
-                window.setAttributes(lp);
-                window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
                 binding.time.setOnClickListener(v1 -> {
                     TimePickerDialog timePickerDialog = new TimePickerDialog(mContext, (view, hourOfDay, minute) -> {
                         String am_pm;
@@ -131,7 +125,10 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                         } else {
                             am_pm = " AM";
                         }
-                        holder.time = hourOfDay + ":" + minute + am_pm;
+                        if (hourOfDay == 0) {
+                            hourOfDay = 12;
+                        }
+                        holder.time = hourOfDay + ":" + (minute == 0 ? "00" : minute) + am_pm;
                         binding.time.setText(holder.time);
                     }, 24, 60, false);
                     timePickerDialog.show();
@@ -145,7 +142,11 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                     dpd.show();
 
                     dpd.setOnDateSetListener((view, year, month, dayOfMonth) -> {
-                        holder.date = dayOfMonth + "-" + month + "-" + year;
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.YEAR, year);
+                        holder.date = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(calendar.getTime());
                         binding.date.setText(holder.date);
                     });
                 });
