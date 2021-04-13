@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card"
+        app:cardElevation="5dp"
+        android:layout_margin="@dimen/large_dp"
+        app:cardBackgroundColor="@color/red"
+        app:cardCornerRadius="@dimen/large_dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:padding="3dp"
+                android:layout_margin="@dimen/large_dp"
+                android:background="@drawable/circle"/>
+
+            <TextView
+                android:id="@+id/ago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/common_dp"
+                android:layout_toStartOf="@id/details"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_horizontal"
+                android:text="1m ago"
+                tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/large_dp"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:layout_marginEnd="@dimen/large_dp"
+                android:layout_marginBottom="@dimen/x_large_dp"
+                android:layout_toEndOf="@id/image"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/white"
+                    android:text="@string/username"
+                    android:textAllCaps="true"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/dark_blue"
+                    android:text="@string/email" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/address"
+                    android:textColor="@color/dark_blue" />
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/contact_number"
+                    android:textColor="@color/dark_blue" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/pending"
+                    android:textColor="@color/dark_blue" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/title"
+                    android:textColor="@color/dark_blue" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dp"
+                    android:background="@drawable/field_back"
+                    android:padding="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/description"
+                    android:textColor="@color/hint_color" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

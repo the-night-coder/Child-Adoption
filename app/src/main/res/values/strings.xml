@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">MotherCare</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="join_us">Join Us</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="add_vendor">Add Vendor</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="address">Address</string>
+    <string name="contact_number">Phone Number</string>
+    <string name="website">Website</string>
+    <string name="change_logo">Change Logo</string>
+    <string name="group_name">Group Name</string>
+    <string name="adoption_centers">Adoption Centers</string>
+    <string name="edit_vendor">Edit Vendor</string>
+    <string name="your_appointments">Your Appointments</string>
+    <string name="create_appointment">Create Appointment</string>
+    <string name="what_for">What for ?</string>
+    <string name="username">Username</string>
+    <string name="pending">Status: Pending</string>
+    <string name="no_appointments_yet">No Appointments yet.</string>
+    <string name="log_out">Log Out</string>
+    <string name="manage_appointment">Manage Appointment</string>
+    <string name="cancel">Cancel</string>
+    <string name="approve">Approve</string>
+    <string name="save">Save</string>
+    <string name="reason_for_cancel">Reason for cancel ?</string>
+    <string name="schedule_appoint">Schedule Appoint</string>
+    <string name="choose_time">Choose Time</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="choose_profile_photo">Choose Profile Photo</string>
+</resources>

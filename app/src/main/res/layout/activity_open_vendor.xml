@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".OpenVendorActivity">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/x_large_dp"
+            android:layout_marginTop="@dimen/large_dp"
+            android:background="@drawable/circle"
+            android:elevation="5dp"
+            android:transitionName="image" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x_large_dp"
+            android:layout_marginTop="@dimen/x_large_dp"
+            android:layout_toEndOf="@id/image"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/group_name"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_blue" />
+
+        <TextView
+            android:id="@+id/website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginStart="@dimen/x_large_dp"
+            android:layout_marginTop="@dimen/large_dp"
+            android:layout_toEndOf="@id/image"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/website"
+            android:textColor="@color/accentColor" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/website"
+            android:layout_marginStart="@dimen/x_large_dp"
+            android:layout_marginTop="@dimen/common_dp"
+            android:layout_marginEnd="@dimen/large_dp"
+            android:layout_toEndOf="@id/image"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/description"
+            android:textColor="@color/dark_blue" />
+
+        <LinearLayout
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="@dimen/x_large_dp"
+            android:layout_marginEnd="@dimen/large_dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_dp"
+                android:drawablePadding="@dimen/large_dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_vertical"
+                android:text="@string/address"
+                android:textColor="@color/dark_blue"
+                app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_dp"
+                android:drawablePadding="@dimen/large_dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_vertical"
+                android:text="@string/contact_number"
+                android:textColor="@color/dark_blue"
+                app:drawableStartCompat="@drawable/ic_baseline_call_24" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_dp"
+                android:drawablePadding="@dimen/large_dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_vertical"
+                android:text="@string/email"
+                android:textColor="@color/dark_blue"
+                app:drawableStartCompat="@drawable/ic_round_mail_outline_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details"
+            android:layout_marginTop="@dimen/x_large_dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/call"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/large_dp"
+                android:background="@drawable/circle"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_call_24" />
+
+            <ImageView
+                android:id="@+id/web"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/large_dp"
+                android:background="@drawable/circle"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_language_24" />
+
+            <ImageView
+                android:id="@+id/mail"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/large_dp"
+                android:background="@drawable/circle"
+                android:scaleType="center"
+                android:src="@drawable/ic_round_mail_outline_24" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/x_large_dp"
+            android:layout_marginBottom="@dimen/x_large_dp"
+            android:backgroundTint="@color/accentColor"
+            android:src="@drawable/ic_baseline_edit_24" />
+    </RelativeLayout>
+</layout>

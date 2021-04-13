@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".AddAppointmentActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:transitionName="image"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:elevation="@dimen/common_dp"
+                android:src="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/x_large_dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/create_appointment"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue" />
+
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/field_back"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_color" />
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/field_back"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/last_name"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_color" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/field_back"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/address"
+                android:inputType="textPostalAddress"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_color" />
+
+            <EditText
+                android:id="@+id/number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/field_back"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/contact_number"
+                android:inputType="phone"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_color" />
+
+            <EditText
+                android:id="@+id/need"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/field_back"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/what_for"
+                android:minHeight="100dp"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/hint_color" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/create"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="#FFAB40"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/create_appointment" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>

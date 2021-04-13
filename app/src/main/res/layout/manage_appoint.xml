@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x_large_dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/large_dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/large_dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/manage_appointment"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_selector_cancel"
+                    android:button="@null"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="@string/cancel"
+                    android:textColor="@color/radio_color_selector" />
+
+                <RadioButton
+                    android:id="@+id/approve"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_selector"
+                    android:button="@null"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="@string/approve"
+                    android:textColor="@color/radio_color_selector" />
+            </RadioGroup>
+
+
+            <LinearLayout
+                android:id="@+id/cancelLay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_large_dp"
+                    android:layout_marginTop="@dimen/large_dp"
+                    android:layout_marginEnd="@dimen/x_large_dp"
+                    android:layout_marginBottom="@dimen/large_dp"
+                    android:background="@drawable/field_back"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/reason_for_cancel"
+                    android:inputType="textMultiLine"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/hint_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/x_large_dp"
+                android:layout_marginTop="@dimen/large_dp"
+                android:layout_marginEnd="@dimen/x_large_dp"
+                android:background="@drawable/outline"
+                android:backgroundTint="@color/green"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/large_dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/schedule_appoint"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/large_dp"
+                    android:background="@drawable/field_back"
+                    android:fontFamily="@font/roboto_regular"
+                    android:padding="@dimen/large_dp"
+                    android:text="@string/choose_time" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/large_dp"
+                    android:background="@drawable/field_back"
+                    android:fontFamily="@font/roboto_regular"
+                    android:padding="@dimen/large_dp"
+                    android:text="@string/choose_date" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/save"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/x_large_dp"
+                android:layout_marginBottom="@dimen/large_dp"
+                android:background="@drawable/button_shape"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/save" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
