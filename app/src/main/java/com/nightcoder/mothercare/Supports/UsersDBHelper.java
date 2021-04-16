@@ -26,6 +26,7 @@ public class UsersDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + Tables.USERS);
         db.execSQL("DROP TABLE IF EXISTS " + Tables.USER_DETAILS);
+        onCreate(db);
     }
 
     public User getUserDetails(String email) {

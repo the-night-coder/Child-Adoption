@@ -1,7 +1,10 @@
 package com.nightcoder.mothercare;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.method.PasswordTransformationMethod;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -9,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 import com.google.android.material.snackbar.Snackbar;
 import com.nightcoder.mothercare.Models.User;
 import com.nightcoder.mothercare.Supports.Constants;
+import com.nightcoder.mothercare.Supports.DialogSupport;
 import com.nightcoder.mothercare.Supports.Prefs;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.databinding.ActivitySignBinding;
@@ -29,6 +33,18 @@ public class SignActivity extends AppCompatActivity {
         binding.register.setOnClickListener(v -> startActivity(new Intent(SignActivity.this, RegisterActivity.class)));
         binding.sign.setOnClickListener(v -> validate());
         dbHelper = new UsersDBHelper(this);
+
+        binding.visiblePass.setOnClickListener(v -> {
+            if (binding.visiblePass.getTag().equals("GONE")){
+                binding.password.setTransformationMethod(null);
+                binding.visiblePass.setTag("VISIBLE");
+                binding.visiblePass.setImageResource(R.drawable.ic_baseline_visibility_off_24);
+            } else {
+                binding.password.setTransformationMethod(new PasswordTransformationMethod());
+                binding.visiblePass.setTag("GONE");
+                binding.visiblePass.setImageResource(R.drawable.ic_baseline_visibility_24);
+            }
+        });
     }
 
     private void validate() {
@@ -38,9 +54,13 @@ public class SignActivity extends AppCompatActivity {
             if (binding.email.getText().toString().equals(Constants.ADMIN)) {
                 if (binding.password.getText().toString().equals(Constants.ADMIN_PASS)) {
                     Prefs.putString(this, Prefs.KEY_USERNAME, Constants.ADMIN);
-                    startActivity(new Intent(this, AdminActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
+                    Dialog dialog = DialogSupport.materialDialog(this, R.layout.loading);
+                    new Handler().postDelayed(() -> {
+                        dialog.cancel();
+                        startActivity(new Intent(this, AdminActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
+                    }, 3000);
                 } else {
                     Snackbar.make(binding.container, "Password incorrect!", Snackbar.LENGTH_SHORT).show();
                 }
@@ -55,12 +75,16 @@ public class SignActivity extends AppCompatActivity {
             if (binding.password.getText().toString().equals(user.password)) {
                 Prefs.putString(this, Prefs.KEY_USERNAME, user.email);
                 Prefs.putInt(this, Prefs.USER_TYPE, user.userType);
-                if (user.userType == Constants.USER)
-                    startActivity(new Intent(this, UserActivity.class)
+                Dialog dialog = DialogSupport.materialDialog(this, R.layout.loading);
+                new Handler().postDelayed(() -> {
+                    dialog.cancel();
+                    if (user.userType == Constants.USER)
+                        startActivity(new Intent(this, UserActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    else startActivity(new Intent(this, VendorActivity.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                else startActivity(new Intent(this, VendorActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                finish();
+                    finish();
+                }, 3000);
             } else {
                 Snackbar.make(binding.container, "Password incorrect!", Snackbar.LENGTH_SHORT).show();
             }

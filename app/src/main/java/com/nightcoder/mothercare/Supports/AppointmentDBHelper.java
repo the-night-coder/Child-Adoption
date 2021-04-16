@@ -26,6 +26,7 @@ public class AppointmentDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + Tables.APPOINTMENT_TABLE);
+        onCreate(db);
     }
 
     public boolean insertAppointment(Appointment arg) {

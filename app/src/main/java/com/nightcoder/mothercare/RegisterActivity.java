@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -36,6 +37,20 @@ public class RegisterActivity extends AppCompatActivity {
         binding.join.setOnClickListener(v -> validate());
         dbHelper = new UsersDBHelper(this);
         binding.image.setOnClickListener(v -> getImage());
+
+        binding.visiblePass.setOnClickListener(v -> {
+            if (binding.visiblePass.getTag().equals("GONE")){
+                binding.password.setTransformationMethod(null);
+                binding.confirmPass.setTransformationMethod(null);
+                binding.visiblePass.setTag("VISIBLE");
+                binding.visiblePass.setImageResource(R.drawable.ic_baseline_visibility_off_24);
+            } else {
+                binding.password.setTransformationMethod(new PasswordTransformationMethod());
+                binding.confirmPass.setTransformationMethod(new PasswordTransformationMethod());
+                binding.visiblePass.setTag("GONE");
+                binding.visiblePass.setImageResource(R.drawable.ic_baseline_visibility_24);
+            }
+        });
     }
 
     private void validate() {
@@ -46,9 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (binding.password.getText().toString().length() <= 8) {
             Snackbar.make(binding.container, "Password must contains least 8 character", Snackbar.LENGTH_SHORT).show();
         } else if (!binding.password.getText().toString().equals(binding.confirmPass.getText().toString())) {
-            Snackbar.make(binding.container, "Password not match", Snackbar.LENGTH_SHORT);
+            Snackbar.make(binding.container, "Password not match", Snackbar.LENGTH_SHORT).show();
         } else if (imageUri == null) {
-            Snackbar.make(binding.container, "Choose a profile photo", Snackbar.LENGTH_SHORT);
+            Snackbar.make(binding.container, "Choose a profile photo", Snackbar.LENGTH_SHORT).show();
         } else {
             join();
         }
