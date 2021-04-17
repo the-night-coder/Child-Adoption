@@ -17,6 +17,9 @@ import com.nightcoder.mothercare.Supports.Prefs;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.databinding.ActivitySignBinding;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SignActivity extends AppCompatActivity {
 
     private ActivitySignBinding binding;
@@ -48,9 +51,9 @@ public class SignActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (!binding.email.getText().toString().contains("@")) {
+        if (!emailValidator(binding.password.getText().toString().trim())) {
             Snackbar.make(binding.container, "Provide valid E-mail address", Snackbar.LENGTH_SHORT).show();
-        } else if (binding.email.getText().toString().length() > 1) {
+        } else if (binding.password.getText().toString().length() > 1) {
             if (binding.email.getText().toString().equals(Constants.ADMIN)) {
                 if (binding.password.getText().toString().equals(Constants.ADMIN_PASS)) {
                     Prefs.putString(this, Prefs.KEY_USERNAME, Constants.ADMIN);
@@ -70,12 +73,16 @@ public class SignActivity extends AppCompatActivity {
     }
 
     private void signIn() {
-        if (dbHelper.getUser(binding.email.getText().toString()) != null) {
+        if (dbHelper.getUser(binding.email.getText().toString()) != null) { // To check user exists
+
             User user = dbHelper.getUser(binding.email.getText().toString());
+
             if (binding.password.getText().toString().equals(user.password)) {
+
                 Prefs.putString(this, Prefs.KEY_USERNAME, user.email);
                 Prefs.putInt(this, Prefs.USER_TYPE, user.userType);
                 Dialog dialog = DialogSupport.materialDialog(this, R.layout.loading);
+
                 new Handler().postDelayed(() -> {
                     dialog.cancel();
                     if (user.userType == Constants.USER)
@@ -85,11 +92,22 @@ public class SignActivity extends AppCompatActivity {
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     finish();
                 }, 3000);
+
             } else {
                 Snackbar.make(binding.container, "Password incorrect!", Snackbar.LENGTH_SHORT).show();
             }
+
         } else {
             Snackbar.make(binding.container, "User doesn't exist!", Snackbar.LENGTH_SHORT).show();
         }
+    }
+
+    public boolean emailValidator(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9]+(\\.[_A-Za-z0-9]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
