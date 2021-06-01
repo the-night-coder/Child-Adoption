@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -51,7 +53,7 @@ public class SignActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (!emailValidator(binding.password.getText().toString().trim())) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()) {
             Snackbar.make(binding.container, "Provide valid E-mail address", Snackbar.LENGTH_SHORT).show();
         } else if (binding.password.getText().toString().length() > 1) {
             if (binding.email.getText().toString().equals(Constants.ADMIN)) {
@@ -100,14 +102,5 @@ public class SignActivity extends AppCompatActivity {
         } else {
             Snackbar.make(binding.container, "User doesn't exist!", Snackbar.LENGTH_SHORT).show();
         }
-    }
-
-    public boolean emailValidator(String email) {
-        Pattern pattern;
-        Matcher matcher;
-        final String EMAIL_PATTERN = "^[_A-Za-z0-9]+(\\.[_A-Za-z0-9]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        matcher = pattern.matcher(email);
-        return matcher.matches();
     }
 }

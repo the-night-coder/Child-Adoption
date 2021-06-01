@@ -48,7 +48,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (binding.firstName.getText().toString().length() < 4) {
+        if (!binding.firstName.getText().toString().matches("[a-z A-Z-]{2,20}")) {
             Toast.makeText(this, "Provide valid Name", Toast.LENGTH_SHORT).show();
         } else if (binding.address.getText().toString().length() < 10) {
             Toast.makeText(this, "Provide valid address", Toast.LENGTH_SHORT).show();
@@ -68,7 +68,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
         appointment.vendor = vendor.email;
         appointment.timestamp = System.currentTimeMillis();
         appointment.need = binding.need.getText().toString();
-        appointment.name = (binding.firstName.getText().toString() + " " + binding.lastName.getText().toString()).trim();
+        appointment.name = binding.firstName.getText().toString().trim();
         if (!dbHelper.insertAppointment(appointment))
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         else finish();

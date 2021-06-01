@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#FF4081" />
+        app:tint="#536DFE" />
 
     <ImageView
         android:id="@+id/imageView"

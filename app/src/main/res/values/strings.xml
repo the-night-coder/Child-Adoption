@@ -35,4 +35,6 @@
     <string name="choose_date">Choose Date</string>
     <string name="choose_profile_photo">Choose Profile Photo</string>
     <string name="loading_sign_in">Connecting</string>
+    <string name="full_name">Full Name</string>
+    <string name="password_condition"> 8 characters \n A number \n Special character</string>
 </resources>

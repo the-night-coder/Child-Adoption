@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -54,11 +55,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (binding.firstName.getText().toString().length() < 4) {
+        if (!binding.firstName.getText().toString().matches("[a-zA-Z-]{2,20}")) {
             Snackbar.make(binding.container, "Provide valid Name", Snackbar.LENGTH_SHORT).show();
-        } else if (!binding.email.getText().toString().contains("@")) {
+        } else if (!binding.lastName.getText().toString().trim().matches("[a-zA-Z-\\.]{1,20}")) {
+            Snackbar.make(binding.container, "Provide valid last name", Snackbar.LENGTH_SHORT).show();
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()) {
             Snackbar.make(binding.container, "Provide valid E-mail address", Snackbar.LENGTH_SHORT).show();
-        } else if (binding.password.getText().toString().length() <= 8) {
+        } else if (binding.password.getText().toString().length() < 8) {
             Snackbar.make(binding.container, "Password must contains least 8 character", Snackbar.LENGTH_SHORT).show();
         } else if (!binding.password.getText().toString().equals(binding.confirmPass.getText().toString())) {
             Snackbar.make(binding.container, "Password not match", Snackbar.LENGTH_SHORT).show();
@@ -70,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void join() {
-        if (dbHelper.getUser(binding.email.getText().toString()) == null || dbHelper.getUserDetails(binding.email.getText().toString()) == null) {
+        if (dbHelper.getUser(binding.email.getText().toString()) == null || dbHelper.getUserDetails(binding.email.getText().toString()) == null) { ///check already user exists
             User user = new User();
             user.fullName = binding.firstName.getText().toString() + " " + binding.lastName.getText().toString();
             user.password = binding.password.getText().toString();

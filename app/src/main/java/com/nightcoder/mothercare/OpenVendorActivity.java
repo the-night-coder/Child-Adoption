@@ -58,7 +58,6 @@ public class OpenVendorActivity extends AppCompatActivity {
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_EMAIL, vendor.email);
             startActivity(intent);
-
         } catch (Exception e) {
             Toast.makeText(this, "G-mail not found", Toast.LENGTH_SHORT).show();
         }

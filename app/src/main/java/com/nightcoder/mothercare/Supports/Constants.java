@@ -1,7 +1,7 @@
 package com.nightcoder.mothercare.Supports;
 
 public class Constants {
-    public static final String ADMIN = "admin@admin";
+    public static final String ADMIN = "admin@admin.com";
     public static final String ADMIN_PASS = "adminadmin";
     public static final String DB_NAME = "MotherCare";
 
