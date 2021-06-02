@@ -153,28 +153,6 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/hint_color" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/x_large_dp"
-                    android:layout_marginTop="@dimen/large_dp"
-                    android:drawableStart="@drawable/ic_outline_info_24"
-                    android:drawablePadding="@dimen/large_dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_vertical"
-                    android:text="Password must contains:"
-                    android:textColor="@color/dark_blue" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="30sp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="start|top"
-                    android:text="@string/password_condition"
-                    android:textColor="@color/dark_blue" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton

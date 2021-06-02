@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Models.User;
 import com.nightcoder.mothercare.Models.Vendor;
 import com.nightcoder.mothercare.Supports.Constants;
@@ -18,7 +20,6 @@ import com.nightcoder.mothercare.Supports.RealPathUtil;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.Supports.VendorDBHelper;
 import com.nightcoder.mothercare.databinding.ActivityEditVendorBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -47,7 +48,7 @@ public class EditVendorActivity extends AppCompatActivity {
         binding.password.setText(vendor.password);
         binding.confirmPass.setText(vendor.password);
         imageUri = vendor.imageUri;
-        Picasso.get().load(new File(vendor.imageUri)).into(binding.logo);
+        Glide.with(this).load(vendor.imageUri).into(binding.logo);
 
         binding.backButton.setOnClickListener(v -> onBackPressed());
         binding.addButton.setOnClickListener(v -> validate());
@@ -57,17 +58,17 @@ public class EditVendorActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (binding.title.getText().toString().length() < 3) {
+        if (!binding.title.getText().toString().matches("[a-zA-Z- ]{2,20}")) {
             Toast.makeText(this, "Provide valid title", Toast.LENGTH_SHORT).show();
         } else if (binding.description.getText().toString().isEmpty()) {
             Toast.makeText(this, "Provide short description", Toast.LENGTH_SHORT).show();
         } else if (binding.address.getText().toString().length() < 10) {
             Toast.makeText(this, "Provide valid address", Toast.LENGTH_SHORT).show();
-        } else if (binding.number.getText().toString().length() <= 10) {
+        } else if (binding.number.getText().toString().length() < 10) {
             Toast.makeText(this, "Provide valid phone number", Toast.LENGTH_SHORT).show();
-        } else if (!binding.email.getText().toString().contains("@")) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()) {
             Toast.makeText(this, "Provide valid E-mail address", Toast.LENGTH_SHORT).show();
-        } else if (binding.password.getText().toString().length() <= 8) {
+        } else if (binding.password.getText().toString().length() < 8) {
             Toast.makeText(this, "Password must contains 8 character", Toast.LENGTH_SHORT).show();
         } else if (!binding.password.getText().toString().equals(binding.confirmPass.getText().toString())) {
             Toast.makeText(this, "Password doesn't match", Toast.LENGTH_SHORT).show();
@@ -122,7 +123,7 @@ public class EditVendorActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101 && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
-            Picasso.get().load(uri).into(binding.logo);
+            Glide.with(this).load(uri).into(binding.logo);
             imageUri = RealPathUtil.getRealPath(this, uri);
         } else if (requestCode == 100) {
             selectImage();

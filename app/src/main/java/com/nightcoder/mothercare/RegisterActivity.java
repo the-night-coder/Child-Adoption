@@ -13,13 +13,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 import com.nightcoder.mothercare.Models.User;
 import com.nightcoder.mothercare.Supports.Constants;
 import com.nightcoder.mothercare.Supports.RealPathUtil;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.databinding.ActivityRegisterBinding;
-import com.squareup.picasso.Picasso;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -119,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101 && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
-            Picasso.get().load(uri).into(binding.image);
+            Glide.with(this).load(uri).into(binding.image);
             imageUri = RealPathUtil.getRealPath(this, uri);
         } else if (requestCode == 100) {
             selectImage();

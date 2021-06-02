@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Models.Vendor;
 import com.nightcoder.mothercare.databinding.ActivityOpenVendorBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ public class OpenVendorActivity extends AppCompatActivity {
     }
 
     private void init() {
-        Picasso.get().load(new File(vendor.imageUri)).into(binding.image);
+        Glide.with(this).load(vendor.imageUri).into(binding.image);
         binding.address.setText(vendor.address);
         binding.title.setText(vendor.title);
         binding.website.setText(vendor.website);

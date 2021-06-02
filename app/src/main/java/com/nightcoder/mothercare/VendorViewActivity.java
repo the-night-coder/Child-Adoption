@@ -11,13 +11,13 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Adapters.AppointmentAdapter;
 import com.nightcoder.mothercare.Interfaces.OnRefresh;
 import com.nightcoder.mothercare.Models.Vendor;
 import com.nightcoder.mothercare.Supports.AppointmentDBHelper;
 import com.nightcoder.mothercare.Supports.Prefs;
 import com.nightcoder.mothercare.databinding.ActivityVendorViewBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -35,7 +35,7 @@ public class VendorViewActivity extends AppCompatActivity implements OnRefresh {
     }
 
     private void init() {
-        Picasso.get().load(new File(vendor.imageUri)).into(binding.image);
+        Glide.with(this).load(vendor.imageUri).into(binding.image);
         binding.address.setText(vendor.address);
         binding.title.setText(vendor.title);
         binding.website.setText(vendor.website);
@@ -52,6 +52,8 @@ public class VendorViewActivity extends AppCompatActivity implements OnRefresh {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
         dbHelper = new AppointmentDBHelper(this);
+        binding.feedback.setOnClickListener(v -> startActivity(new Intent(VendorViewActivity.this, FeedbackActivity.class)
+                .putExtra("vendor", vendor.email)));
     }
 
     private void setAppointments() {

@@ -118,6 +118,15 @@
                     android:text="@string/email"
                     android:textColor="@color/dark_blue"
                     app:drawableStartCompat="@drawable/ic_round_mail_outline_24" />
+
+                <Button
+                    android:id="@+id/feedback"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/common_dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/feedback" />
             </LinearLayout>
 
             <LinearLayout

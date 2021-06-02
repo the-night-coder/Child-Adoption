@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Models.User;
 import com.nightcoder.mothercare.Models.Vendor;
 import com.nightcoder.mothercare.Supports.Constants;
@@ -19,7 +20,6 @@ import com.nightcoder.mothercare.Supports.RealPathUtil;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.Supports.VendorDBHelper;
 import com.nightcoder.mothercare.databinding.ActivityAddVendorBinding;
-import com.squareup.picasso.Picasso;
 
 public class AddVendorActivity extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class AddVendorActivity extends AppCompatActivity {
     }
 
     private void validate() {
-        if (!binding.title.getText().toString().matches("[a-zA-Z-]{2,20}")) {
+        if (!binding.title.getText().toString().matches("[a-zA-Z- ]{2,20}")) {
             Toast.makeText(this, "Provide valid title", Toast.LENGTH_SHORT).show();
         } else if (binding.description.getText().toString().isEmpty()) {
             Toast.makeText(this, "Provide short description", Toast.LENGTH_SHORT).show();
@@ -114,7 +114,7 @@ public class AddVendorActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101 && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
-            Picasso.get().load(uri).into(binding.logo);
+            Glide.with(this).load(uri).into(binding.logo);
             imageUri = RealPathUtil.getRealPath(this, uri);
         } else if (requestCode == 100) {
             selectImage();

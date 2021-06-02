@@ -137,6 +137,15 @@
                 android:scaleType="center"
                 android:src="@drawable/ic_round_mail_outline_24" />
 
+            <ImageView
+                android:id="@+id/feedback"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="@dimen/large_dp"
+                android:background="@drawable/circle"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_feedback_24" />
+
         </LinearLayout>
 
         <LinearLayout

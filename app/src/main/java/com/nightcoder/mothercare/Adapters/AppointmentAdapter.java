@@ -23,6 +23,7 @@ import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.nightcoder.mothercare.Interfaces.OnRefresh;
 import com.nightcoder.mothercare.Models.Appointment;
@@ -34,7 +35,6 @@ import com.nightcoder.mothercare.Supports.Time;
 import com.nightcoder.mothercare.VendorActivity;
 import com.nightcoder.mothercare.databinding.ItemAppointmentsBinding;
 import com.nightcoder.mothercare.databinding.ManageAppointBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -90,7 +90,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             holder.binding.time.setText("Scheduled: " + appointment.schedule);
         }
 
-        Picasso.get().load(new File(appointment.photoUrl)).into(holder.binding.image);
+        Glide.with(mContext).load(appointment.photoUrl).into(holder.binding.image);
         Log.d("PhotoUrl", appointment.photoUrl);
 
         holder.binding.ago.setText(Time.getTimeFullText(appointment.timestamp));

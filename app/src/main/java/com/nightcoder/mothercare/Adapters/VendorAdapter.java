@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
 import com.nightcoder.mothercare.AdminActivity;
 import com.nightcoder.mothercare.Models.Vendor;
 import com.nightcoder.mothercare.OpenVendorActivity;
 import com.nightcoder.mothercare.R;
 import com.nightcoder.mothercare.VendorViewActivity;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -54,7 +54,7 @@ public class VendorAdapter extends RecyclerView.Adapter<VendorAdapter.ViewHolder
         vendor.number = cursor.getString(cursor.getColumnIndex("number"));
         vendor.address = cursor.getString(cursor.getColumnIndex("address"));
         vendor.password = cursor.getString(cursor.getColumnIndex("password"));
-        Picasso.get().load(new File(vendor.imageUri)).into(holder.imageView);
+        Glide.with(mContext).load(vendor.imageUri).into(holder.imageView);
         Log.d("URL", vendor.imageUri);
         holder.title.setText(vendor.title);
         holder.description.setText(vendor.description);

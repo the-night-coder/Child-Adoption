@@ -110,7 +110,7 @@
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:hint="@string/address"
-                    android:inputType="textPostalAddress"
+                    android:inputType="textMultiLine"
                     android:minHeight="90dp"
                     android:padding="16dp"
                     android:textColor="@color/black"

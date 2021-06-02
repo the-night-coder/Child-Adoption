@@ -5,4 +5,5 @@ public class Tables {
     public static final String USER_DETAILS = "usersDetails";
     public static final String VENDOR_DETAILS = "vendorDetails";
     public static final String APPOINTMENT_TABLE = "appointments";
+    public static final String FEEDBACK_TABLE = "feedback";
 }

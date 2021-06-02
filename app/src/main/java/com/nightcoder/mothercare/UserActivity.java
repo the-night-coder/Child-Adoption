@@ -15,14 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Adapters.VendorAdapter;
 import com.nightcoder.mothercare.Models.User;
 import com.nightcoder.mothercare.Supports.Prefs;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.Supports.VendorDBHelper;
 import com.nightcoder.mothercare.databinding.ActivityMainBinding;
-import com.squareup.picasso.Picasso;
-
 import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -53,7 +52,7 @@ public class UserActivity extends AppCompatActivity {
         dbHelper = new VendorDBHelper(this);
         usersDBHelper = new UsersDBHelper(this);
         user = usersDBHelper.getUserDetails(Prefs.getString(this, Prefs.KEY_USERNAME, null));
-        Picasso.get().load(new File(user.photoUrl)).into(binding.profile);
+        Glide.with(this).load(user.photoUrl).into(binding.profile);
         showVendors();
     }
 
@@ -81,7 +80,7 @@ public class UserActivity extends AppCompatActivity {
         });
         username.setText(user.fullName);
         email.setText(user.email);
-        Picasso.get().load(new File(user.photoUrl)).into(image);
+        Glide.with(this).load(user.photoUrl).into(image);
         dialog.show();
     }
 

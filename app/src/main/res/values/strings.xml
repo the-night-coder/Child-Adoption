@@ -37,4 +37,8 @@
     <string name="loading_sign_in">Connecting</string>
     <string name="full_name">Full Name</string>
     <string name="password_condition"> 8 characters \n A number \n Special character</string>
+    <string name="feedback">Feedback</string>
+    <string name="sample_time">10:10 AM</string>
+    <string name="send">Send</string>
+    <string name="no_feedback_yet">No feedback yet</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Adapters.AppointmentAdapter;
 import com.nightcoder.mothercare.Interfaces.OnRefresh;
 import com.nightcoder.mothercare.Models.Vendor;
@@ -16,7 +17,6 @@ import com.nightcoder.mothercare.Supports.AppointmentDBHelper;
 import com.nightcoder.mothercare.Supports.Prefs;
 import com.nightcoder.mothercare.Supports.VendorDBHelper;
 import com.nightcoder.mothercare.databinding.ActivityVendorBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -41,7 +41,7 @@ public class VendorActivity extends AppCompatActivity implements OnRefresh {
         vendor = vendorDBHelper.getVendor(Prefs.getString(this, Prefs.KEY_USERNAME, null));
         if (vendor == null)
             finish();
-        Picasso.get().load(new File(vendor.imageUri)).into(binding.image);
+        Glide.with(this).load(vendor.imageUri).into(binding.image);
         binding.address.setText(vendor.address);
         binding.title.setText(vendor.title);
         binding.website.setText(vendor.website);
@@ -55,6 +55,8 @@ public class VendorActivity extends AppCompatActivity implements OnRefresh {
         binding.recyclerView.setHasFixedSize(true);
         dbHelper = new AppointmentDBHelper(this);
         binding.logout.setOnClickListener(v -> logOut());
+        binding.feedback.setOnClickListener(v -> startActivity(new Intent(VendorActivity.this, FeedbackActivity.class)
+                .putExtra("vendor", vendor.email)));
     }
 
     private void logOut() {

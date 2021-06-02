@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.nightcoder.mothercare.Models.Appointment;
 import com.nightcoder.mothercare.Models.User;
 import com.nightcoder.mothercare.Models.Vendor;
@@ -13,7 +14,6 @@ import com.nightcoder.mothercare.Supports.AppointmentDBHelper;
 import com.nightcoder.mothercare.Supports.Prefs;
 import com.nightcoder.mothercare.Supports.UsersDBHelper;
 import com.nightcoder.mothercare.databinding.ActivityAddAppointmentBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -29,7 +29,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_appointment);
         vendor = VendorViewActivity.vendor;
-        Picasso.get().load(new File(vendor.imageUri)).into(binding.image);
+        Glide.with(this).load(vendor.imageUri).into(binding.image);
         init();
         setViews();
     }
